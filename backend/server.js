@@ -55,7 +55,7 @@ app.post('/login-face', async (req, res) => {
     const attempts = loginAttempts.get(ip) || [];
     const recentAttempts = attempts.filter(time => now - time < 5 * 60 * 1000);
 
-    if (recentAttempts.length >= 5) {
+    if (recentAttempts.length >= 10) {
         return res.status(429).json({ error: 'Too many login attempts. Please wait 5 minutes.' });
     }
 
